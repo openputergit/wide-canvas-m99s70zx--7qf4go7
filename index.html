@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Diva - Premium Water Delivery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --clay-background: #e4f3ff;
+            --clay-shadow-1: #ffffff;
+            --clay-shadow-2: #c8ddf0;
+        }
+        
+        .clay-card {
+            background: var(--clay-background);
+            border-radius: 30px;
+            box-shadow: 8px 8px 16px var(--clay-shadow-2),
+                       -8px -8px 16px var(--clay-shadow-1);
+            padding: 20px;
+        }
+
+        .clay-button {
+            background: var(--clay-background);
+            border-radius: 15px;
+            box-shadow: 5px 5px 10px var(--clay-shadow-2),
+                       -5px -5px 10px var(--clay-shadow-1);
+            transition: all 0.3s ease;
+        }
+
+        .clay-button:active {
+            box-shadow: inset 5px 5px 10px var(--clay-shadow-2),
+                       inset -5px -5px 10px var(--clay-shadow-1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--clay-background);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="clay-card fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">Aqua Diva</h1>
+            <div class="flex gap-4">
+                <button class="clay-button px-4 py-2" onclick="toggleModal('loginModal')">Login</button>
+                <button class="clay-button px-4 py-2 md:hidden" onclick="toggleMenu()">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 pt-24 pb-16">
+        <!-- Hero Section -->
+        <section class="clay-card my-8">
+            <div class="text-center py-12">
+                <h2 class="text-4xl font-bold text-blue-600 mb-4">Pure Water, Delivered</h2>
+                <p class="text-gray-600 mb-8">Premium water delivery service at your doorstep</p>
+                <button class="clay-button px-8 py-4 text-blue-600 font-semibold" onclick="toggleModal('orderModal')">
+                    Order Now
+                </button>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8">
+            <div class="clay-card">
+                <i class="bi bi-droplet-fill text-4xl text-blue-500"></i>
+                <h3 class="text-xl font-semibold my-4">Premium Quality</h3>
+                <p class="text-gray-600">Pure, filtered water that meets the highest standards</p>
+            </div>
+            <div class="clay-card">
+                <i class="bi bi-clock-fill text-4xl text-blue-500"></i>
+                <h3 class="text-xl font-semibold my-4">Quick Delivery</h3>
+                <p class="text-gray-600">Same-day delivery with real-time tracking</p>
+            </div>
+            <div class="clay-card">
+                <i class="bi bi-star-fill text-4xl text-blue-500"></i>
+                <h3 class="text-xl font-semibold my-4">Loyalty Rewards</h3>
+                <p class="text-gray-600">Earn points with every order</p>
+            </div>
+        </div>
+
+        <!-- Community Section -->
+        <section class="clay-card my-8">
+            <h2 class="text-2xl font-bold text-blue-600 mb-6">Community</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="clay-card">
+                    <h3 class="text-xl font-semibold mb-4">Hydration Tips</h3>
+                    <ul class="space-y-4">
+                        <li>Drink 8 glasses of water daily</li>
+                        <li>Set hydration reminders</li>
+                        <li>Track your water intake</li>
+                    </ul>
+                </div>
+                <div class="clay-card">
+                    <h3 class="text-xl font-semibold mb-4">Customer Stories</h3>
+                    <div class="space-y-4">
+                        <p>"Best water delivery service ever!" - Sarah</p>
+                        <p>"Never running out of water again!" - Mike</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="fixed inset-0 flex items-center justify-center">
+            <div class="clay-card w-full max-w-md mx-4">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-blue-600">Login</h2>
+                    <button onclick="toggleModal('loginModal')" class="text-gray-600">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                <form class="space-y-4">
+                    <input type="email" placeholder="Email" class="w-full p-3 rounded-lg border">
+                    <input type="password" placeholder="Password" class="w-full p-3 rounded-lg border">
+                    <button type="submit" class="clay-button w-full py-3 text-blue-600 font-semibold">
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="fixed inset-0 flex items-center justify-center">
+            <div class="clay-card w-full max-w-md mx-4">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-blue-600">Place Order</h2>
+                    <button onclick="toggleModal('orderModal')" class="text-gray-600">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </div>
+                <form class="space-y-4">
+                    <select class="w-full p-3 rounded-lg border">
+                        <option>Select Water Type</option>
+                        <option>Mineral Water - 20L</option>
+                        <option>Spring Water - 20L</option>
+                        <option>Alkaline Water - 20L</option>
+                    </select>
+                    <input type="number" placeholder="Quantity" class="w-full p-3 rounded-lg border">
+                    <input type="text" placeholder="Delivery Address" class="w-full p-3 rounded-lg border">
+                    <button type="submit" class="clay-button w-full py-3 text-blue-600 font-semibold">
+                        Confirm Order
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = modal.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function toggleMenu() {
+            // Mobile menu toggle functionality
+            console.log('Menu toggled');
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let modal of modals) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        }
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
